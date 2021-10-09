@@ -1,0 +1,199 @@
+
+    menuItem
+        -label "Center Pivot" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "CenterPivot" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "SW" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "CenterPivot.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem5;
+
+    menuItem
+        -label "Freeze Transform" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "FreezeTransformations" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "N" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "FreezeTransform.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem12;
+
+    menuItem
+        -label "menuEditorMenuItem13" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "FreezeTransformationsOptions" 
+        -optionBox 1
+        -enable 1
+        -visible 0
+        -data 0
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 0
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem13;
+
+    menuItem
+        -label "Constraints" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "string $SlideStatus = `xformConstraint -query -type`;\n\nif ($SlideStatus == \"none\") {\ndR_DoCmd(\"slideEdge\");\ninViewMessage -smg \"Transform Constraint Edge is On\" -pos topCenter -bkc 0x00000000 -fade;\n}\n\nelse if ($SlideStatus == \"edge\") {\ndR_DoCmd(\"slideOff\");\ninViewMessage -smg \"Transform Constraint is Off\" -pos topCenter -bkc 0x00000000 -fade;\n}\n" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "W" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "transformation.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem7;
+
+    menuItem
+        -label "Delete Nodes" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "//This is a paid script pack and is not free to use. Please purchase a copy and download the script pack here https://gumroad.com/malcolm341\n\n//Thanks very much for your support! Each purchase helps maintain the ad free Youtube channel found here https://www.youtube.com/malcolm341\n\n//Delete Empty Groups v1.2\n\n{\n\t//Delete history to prevent messing up materials assignments\n\tBakeAllNonDefHistory;\n\t\n\t//Delete empty groups and sets Maya way\n\tsource cleanUpScene;\n\tdeleteEmptyGroups;\n\tdeleteUnusedSets;\n\n\t{\n\t\t//Select all meshes without vertices and delete them\n\t\tstring $allXforms[] = `ls -exactType mesh`;\n\t\tselect $allXforms;\n\t\t\n\t\t//Deselect all deformer shapes with a hack because they're all named orig\n\t\tfor ($itemXF in $allXforms)\n\t\t{\n\t\t\tif (`gmatch $itemXF \"*Orig\"`)\n\t\t\t{\n\t\t\t\tselect -deselect \"*Orig\";\n\t\t\t}\n\t\t}\n\t\t$allXforms = `ls -sl`;\n\n\t\t//Set up loop\n\t\tstring $Objs[] = `ls -sl`;\n\t\tint $ObjsSize = `size $Objs`;\n\t\tint\t$Counter = 0;\n\n\t\tfor ($ItemDEG1 = 0; $ItemDEG1 < $ObjsSize; ++$ItemDEG1)\n\t\t{\n\t\t\t//Select first item\n\t\t\tselect $Objs[$Counter];\n\t\t\t//If child has no verts delete it\n\t\t\tConvertSelectionToVertices;\n\t\t\tstring $checkIfVerts[] = `filterExpand -sm 31`;\n\t\t\tint $checkIfVertsSize = `size $checkIfVerts`;\n\t\t\tif ($checkIfVertsSize == 0)\n\t\t\t{\n\t\t\t\t\tdelete;\n\t\t\t}\t\n\t\t\t$Counter = $Counter + 1;\n\t\t}\n\t\t//Delete empty groups Maya way\n\t\tsource cleanUpScene;\n\t\tdeleteEmptyGroups;\n\t}\n\n\t{\n\t\t//Select all transforms without children and delete them\n\t\tSelectAllCameras;\n\t\tstring $allCamera[] = `ls -sl`;\n\t\tstring $allXforms[] = `ls -exactType transform`;\n\t\tselect $allXforms;\n\t\tselect -deselect $allCamera;\n\n\t\t//Set up loop\n\t\tstring $Objs[] = `ls -sl`;\n\t\tint $ObjsSize = `size $Objs`;\n\t\tint\t$Counter = 0;\n\n\t\tfor ($ItemDEG2 = 0; $ItemDEG2 < $ObjsSize; ++$ItemDEG2)\n\t\t{\n\t\t\t//Select first item\n\t\t\tselect $Objs[$Counter];\n\t\t\t//Query if child exists\n\t\t\tstring $checkForChildren[] = `listRelatives`;\n\t\t\tint $checkForChildrenSize = `size $checkForChildren`;\n\t\t\tif ($checkForChildrenSize == 0)\n\t\t\t{\n\t\t\t\t//If no child delete it\n\t\t\t\tdelete;\n\t\t\t}\n\t\t\t$Counter = $Counter + 1;\n\t\t}\n\t\t//Delete empty groups Maya way\n\t\tsource cleanUpScene;\n\t\tdeleteEmptyGroups;\n\t}\n\tSelectNone;\n\tprint \"Empty groups deleted\";\n}" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "NW" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "delete.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem11;
+
+    menuItem
+        -label "History" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "DeleteAllHistory" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "NE" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "DeleteHistory.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem6;
+
+    menuItem
+        -label "Pivot Align" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "bt_alignPivotToBoundingBoxWin;" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "SE" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "pivotAlign.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem2;
+
+    menuItem
+        -label "Object to Origin" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "string $obj[] = `ls -sl`;\nmove -rpr 0 0 0 $obj" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "E" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "clip_move_cross.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem1;
+
+    menuItem
+        -label "Reset Pivot" 
+        -divider 0
+        -subMenu 0
+        -tearOff 0
+        -command "{ string $objs[] = `ls -sl -type transform -type geometryShape`;if (size($objs) > 0) { xform -cp; } manipPivot -rp -ro; };" 
+        -optionBox 0
+        -enable 1
+        -visible 1
+        -data 0
+        -radialPosition "S" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -enableCommandRepeat 1
+        -image "pivotReset.png" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        -sourceType "mel" 
+        -longDivider 1
+        menuEditorMenuItem21;
+
+setParent -m ..;
+

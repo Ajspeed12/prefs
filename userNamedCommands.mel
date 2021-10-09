@@ -1,0 +1,112 @@
+//Maya Preference 2022 (Release 1)
+//
+//
+
+nameCommand
+	-annotation "Andrew_MM_PressNameCommand"
+	-sourceType "mel"
+	-command ("Andrew_MM_Press")
+	Andrew_MM_PressNameCommand;
+
+nameCommand
+	-annotation "Andrew_MM_ReleaseNameCommand"
+	-sourceType "mel"
+	-command ("Andrew_MM_Release")
+	Andrew_MM_ReleaseNameCommand;
+
+nameCommand
+	-annotation "Toggle_XrayNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Xray")
+	Toggle_XrayNameCommand;
+
+nameCommand
+	-annotation "Hide_UINameCommand"
+	-sourceType "mel"
+	-command ("Hide_UI")
+	Hide_UINameCommand;
+
+nameCommand
+	-annotation "Toggle_OutlinerNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Outliner")
+	Toggle_OutlinerNameCommand;
+
+nameCommand
+	-annotation "LowQualityDisplayNameCommand"
+	-sourceType "mel"
+	-command ("LowQualityDisplay")
+	LowQualityDisplayNameCommand;
+
+nameCommand
+	-annotation "OutlinerWindowNameCommand"
+	-sourceType "mel"
+	-command ("OutlinerWindow")
+	OutlinerWindowNameCommand;
+
+nameCommand
+	-annotation "ToggleWireframeOnShadedCmdNameCommand"
+	-sourceType "mel"
+	-command ("ToggleWireframeOnShadedCmd")
+	ToggleWireframeOnShadedCmdNameCommand;
+
+nameCommand
+	-annotation "ExportNameCommand"
+	-sourceType "mel"
+	-command ("Export")
+	ExportNameCommand;
+
+nameCommand
+	-annotation "BevelPolygonNameCommand"
+	-sourceType "mel"
+	-command ("BevelPolygon")
+	BevelPolygonNameCommand;
+
+nameCommand
+	-annotation "BevelPolygonOptionsNameCommand"
+	-sourceType "mel"
+	-command ("BevelPolygonOptions")
+	BevelPolygonOptionsNameCommand;
+
+nameCommand
+	-annotation "ImportNameCommand"
+	-sourceType "mel"
+	-command ("Import")
+	ImportNameCommand;
+
+nameCommand
+	-annotation "Toggle_Attribute_EditorNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Attribute_Editor")
+	Toggle_Attribute_EditorNameCommand;
+
+nameCommand
+	-annotation "Toggle_Channel_BoxNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Channel_Box")
+	Toggle_Channel_BoxNameCommand;
+
+nameCommand
+	-annotation "Toggle_Modeling_ToolkitNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Modeling_Toolkit")
+	Toggle_Modeling_ToolkitNameCommand;
+
+nameCommand
+	-annotation "Toggle_Tool_SettingsNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_Tool_Settings")
+	Toggle_Tool_SettingsNameCommand;
+
+nameCommand
+	-annotation "Toggle_UV_ToolkitNameCommand"
+	-sourceType "mel"
+	-command ("Toggle_UV_Toolkit")
+	Toggle_UV_ToolkitNameCommand;
+
+nameCommand
+	-annotation "ExportSelectionNameCommand"
+	-sourceType "mel"
+	-command ("ExportSelection")
+	ExportSelectionNameCommand;
+

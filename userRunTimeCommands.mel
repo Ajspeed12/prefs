@@ -1,0 +1,134 @@
+//Maya Preference 2022 (Release 1)
+//
+//
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation "Andrew_MM (Press)"
+	-category "Other items.User Marking Menus"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent `findPanelPopupParent` -mm 1 tempMM; \nsource \"menu_Andrew_MM\";\n")
+	Andrew_MM_Press;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ToggleOutliner;")
+	Toggle_Outliner;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("if (`optionVar -q mainWindowMenubarVis`) {setMainMenubarVisible 0;} else {setMainMenubarVisible 1;};\nif (`optionVar -q allowMenusInPanels`) {toggleMenuBarsInAllPanels 0;} else {toggleMenuBarsInAllPanels 1;};\nif (`optionVar -q collapseIconBarsInPanels`) {toggleModelEditorBarsInAllPanels 0;} else {toggleModelEditorBarsInAllPanels 1;};")
+	Hide_UI;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation "Andrew_MM (Release)"
+	-category "Other items.User Marking Menus"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	Andrew_MM_Release;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("string $visPanel[]=`getPanel -vis`;\nint $mode;\nif (size($visPanel)>0)\n{\nfor ($panel in $visPanel)\n{\nif (`match \"^modelPanel\" $panel`==\"modelPanel\")\n{\n$mode=`modelEditor -q -xray $panel`;\nif ($mode>0)\nmodelEditor -e -xray 0 $panel;\nelse\nmodelEditor -e -xray 1 $panel;\n}\n}\nprint (\"\\nxray=\"+$mode+\".\");\n} else\nprint (\"\\nNo model panels to modify.\");")
+	Toggle_Xray;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ToggleAttributeEditor;")
+	Toggle_Attribute_Editor;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ToggleChannelBox;")
+	Toggle_Channel_Box;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ToggleModelingToolkit;")
+	Toggle_Modeling_Toolkit;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ToggleToolSettings;")
+	Toggle_Tool_Settings;
+
+runTimeCommand
+	-label ""
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("toggleUVToolkit;")
+	Toggle_UV_Toolkit;
+
