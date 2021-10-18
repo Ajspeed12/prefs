@@ -110,3 +110,21 @@ nameCommand
 	-command ("ExportSelection")
 	ExportSelectionNameCommand;
 
+nameCommand
+	-annotation "CreateImagePlaneNameCommand"
+	-sourceType "mel"
+	-command ("CreateImagePlane")
+	CreateImagePlaneNameCommand;
+
+nameCommand
+	-annotation "Image_PlaneNameCommand"
+	-sourceType "mel"
+	-command ("Image_Plane")
+	Image_PlaneNameCommand;
+
+nameCommand
+	-annotation "ToggleGridNameCommand"
+	-sourceType "mel"
+	-command ("ToggleGrid")
+	ToggleGridNameCommand;
+

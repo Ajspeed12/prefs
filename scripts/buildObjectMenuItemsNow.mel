@@ -141,58 +141,113 @@ global proc buildObjectMenuItemsNow( string $parentName)
 						-label (uiRes("m_buildObjectMenuItemsNow.kCompleteTool"))
 						-radialPosition "N"
 						-command ("CompleteCurrentTool");
+
 					menuItem
-						-version "2014"
-						-label (uiRes("m_buildObjectMenuItemsNow.kSelectAll"))
-						-radialPosition "S"
-						-command ("SelectAll");
-					menuItem
-						-label "Clipping"
-						-radialPosition "SW"
-						-image "Camera.png" 
-						-command ("bt_adjustClipPlanes");
-					menuItem
-						-label "FourView"
-						-radialPosition "W"
-						-image "fourViewLayout.png" 
-						-command ("setNamedPanelLayout \"Four View\";");
+						-label "Measuring"
+						-radialPosition "E"
+						-image "distanceDim.png"
+						-command ("source \"kl_measureTool_v2_11\";");
+					
 					menuItem
 						-label "Snap Together Tool"
-						-radialPosition "E"
+						-radialPosition "SE"
 						-image "snapTogetherTool.png" 
 						-command ("SetSnapTogetherTool");
+					
 					menuItem -optionBox true
 						-label "Snap Together Tool Options"
 						-annotation (getRunTimeCommandAnnotation("SetSnapTogetherToolOptions"))
 						-image "snapTogetherTool.png" 
 						-command "SetSnapTogetherToolOptions" 
-						-radialPosition "E";
+						-radialPosition "SE";
+					
 					menuItem
-						-label "Preferences"
-						-subMenu 1
-						-tearOff 0
-						-radialPosition "NW" 
-						-allowOptionBoxes 1
-						-postMenuCommandOnce 0;
+						-label "Grid"
+						-radialPosition "NE"
+						-image "Grid.png" 
+						-command ("optionVar -intValue showGrid (!`optionVar -query showGrid`); grid -toggle (`optionVar -query showGrid`);");
+					
+					menuItem -optionBox true
+						-label "Grid Options"
+						-command "gridEditor" 
+						-radialPosition "SE";
+					
 					menuItem
-						-annotation "Hotkey Editor"
-						-label "Hotkey Editor"
-						-command    ("HotkeyPreferencesWindow;");
+						-version "2014"
+						-label (uiRes("m_buildObjectMenuItemsNow.kSelectAll"))
+						-radialPosition "S"
+						-command ("SelectAll");
+				
 					menuItem
-						-annotation "Marking Menu Editor"
-						-label "Marking Menu Editor"
-						-command ("MarkingMenuPreferencesWindow;"); 
+						-label "Clipping"
+						-radialPosition "NW"
+						-image "Camera.png" 
+						-command ("bt_adjustClipPlanes");
+				
 					menuItem
-						-annotation "Shelf Editor"						
-						-label "Shelf Editor"
-						-command ("ShelfPreferencesWindow;");
-					menuItem
-						-divider 1;
-					menuItem
-						-annotation "Preferences"
-						-label "Preferences"
-						-command ("PreferencesWindow");
-            		setParent ..;
+						-label "FourView"
+						-radialPosition "W"
+						-image "fourViewLayout.png" 
+						-command ("setNamedPanelLayout \"Four View\";");
+				
+menuItem
+	    -version "2018"
+		-label "Preferences"		
+		-subMenu 1
+		-tearOff 0
+		-radialPosition "SW" 
+		-allowOptionBoxes 1
+		-postMenuCommandOnce 0
+		;
+
+			menuItem
+				-label "Hotkey"
+				-command "HotkeyPreferencesWindow;" 
+				-radialPosition "N" 
+				-enableCommandRepeat 1
+				;
+
+			menuItem
+				-label "Marking Menu"
+				-command "MarkingMenuPreferencesWindow" 
+				-radialPosition "NW" 
+				-enableCommandRepeat 1
+				;
+			menuItem
+				-label "Shelf"
+				-command "ToggleShelf"
+				-radialPosition "S" 
+				-enableCommandRepeat 1
+				;
+			menuItem
+				-label "Shelf"
+				-command "ShelfPreferencesWindow" 
+				-optionBox 1
+				-radialPosition "S" 
+				-enableCommandRepeat 1
+				;
+
+			menuItem
+				-label "Preferences"
+				-command "PreferencesWindow" 
+				-radialPosition "SW" 
+				-enableCommandRepeat 1
+				;
+			menuItem
+				-label "Preferences"
+				-command "SavePreferences" 
+				-optionBox 1
+				-radialPosition "SW" 
+				-enableCommandRepeat 1
+				;
+			menuItem
+				-label "Plugin Manager"
+				-command "PluginManager;"
+				-radialPosition "W" 
+				-enableCommandRepeat 1
+				;
+
+				setParent -m ..;
 				}
 			}
 		}

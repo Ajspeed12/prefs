@@ -1,0 +1,122 @@
+/* 
+''    Script Name: Grid Editor
+''    Author: BlackHwk4 
+''    Edited By: Ash88mph 
+''    Last Updated: Oct 15, 2016
+''  
+''  Please do not alter any information above this line
+''  it is generated dynamically by Highend3d.com and will
+''  be changed automatically on any updates.
+*/
+/*********************************************************************************************
+        Made by: Greg Hendrix
+		Edited by: Andrea Massa
+				
+        Command to run the script: gridEditor
+        
+        Description:
+        This script allows you to quickly change the size, spacing, and divisions of the Maya
+        grid.
+        
+        How to use:
+        Run the command gridEditor to start the script. Use the arrows on the left or type a 
+        value in the respective fields to change the grid values. Turning on/off the Grid
+        checkbox will toggle the visibility of the grid. Clicking the default button will reset
+        the grid to its default values.
+*********************************************************************************************/
+
+// Main procedure. Run this to start the script
+global proc gridEditor()
+{
+      string $wndName = "gridEditor_v2";
+
+      // if window exists
+      if (`window -ex $wndName`)
+              deleteUI $wndName;	// kill it
+              
+      window -t "Grid Editor" -wh 130 90 $wndName;
+
+      columnLayout -cw 150 -cat "both" 3 mainLayout;
+
+              separator -st "none";
+
+              rowColumnLayout -nc 2 -cw 1 75 -cw 2 60;
+                      // toggles the grid on/off
+                      checkBox -l "Grid" -v `grid -q -tgl` -onc "grid -tgl 1" -ofc "grid -tgl 0";
+      
+                      // resets the grid to its default values
+                      button -l "Default" -c "gridReset()";
+              setParent..;
+      
+              rowColumnLayout -nc 4 -cw 1 20 -cw 2 20 -cw 3 50 -cw 4 60 -cs 2 3 -cs 3 2 -cs 4 2;
+                      // grid size
+                      button -l "<" -c "changeGridVal(\"s\", -500)"; // lower the value
+                      button -l ">" -c "changeGridVal(\"s\", 500)";  // raise the value
+                      text -l "Size";
+                      floatField -min 1 -s 1 -pre 0 -v `grid -q -s` -cc "grid -s `floatField -q -v gridSizeFF`" gridSizeFF;
+
+                      // grid spacing
+                      button -l "<" -c "changeGridVal(\"sp\", -25)";
+                      button -l ">" -c "changeGridVal(\"sp\", 25)";
+                      text -l "Spacing";
+                      floatField -min 1 -s 1 -pre 0 -v `grid -q -sp` -cc "grid -sp `floatField -q -v gridSpacingFF`" gridSpacingFF;
+      
+                      // grid divisions
+                      button -l "<" -c "changeGridVal(\"d\", -1)";
+                      button -l ">" -c "changeGridVal(\"d\", 1)";
+                      text -l "Divisions";
+                      floatField -min 1 -s 1 -pre 0 -v `grid -q -d` -cc "grid -d `floatField -q -v gridDivisionsFF`" gridDivisionsFF;
+      
+      showWindow $wndName;
+}
+
+// Resets the grid to the default settings.
+global proc gridReset()
+{
+        // reset the grid
+        grid -r;
+        
+        // update the floatFields
+        floatField -e -v `grid -q -s` gridSizeFF;
+        floatField -e -v `grid -q -sp` gridSpacingFF;
+        floatField -e -v `grid -q -d` gridDivisionsFF;
+}
+
+global proc changeGridVal(string $flag, int $num)
+{
+        float $gridVal;
+        
+        switch ($flag)
+        {
+                // check for grid size
+                case "s":
+                        $gridVal = `grid -q -s` + $num;
+
+                        grid -s $gridVal;
+                
+                        floatField -e -v $gridVal gridSizeFF;
+                break;
+
+                // check for grid spacing
+                case "sp":
+                        $gridVal = `grid -q -sp` + $num;
+
+                        grid -sp $gridVal;
+
+                        floatField -e -v $gridVal gridSpacingFF;
+                break;
+                
+                // check for grid divisions
+                case "d":
+                        $gridVal = `grid -q -d` + $num;
+
+                        grid -d $gridVal;
+                
+                        floatField -e -v $gridVal gridDivisionsFF;
+                break;
+                
+                default:
+                        error "You put the wrong flag in the changeGridVal() procedure!\n";
+                break;
+        }
+}
