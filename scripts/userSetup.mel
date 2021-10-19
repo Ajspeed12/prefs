@@ -1,0 +1,180 @@
+// View Axis
+	headsUpDisplay -s 5
+		-b 0
+		-vis (`optionVar -q viewAxisVisibility`)
+		-pre "viewAxis"
+		HUDViewAxis;
+
+ToggleOriginAxis;
+
+// Poly Count (Top Left)
+	headsUpDisplay 
+		-s 0
+		-b 0
+		-label "Verts:"
+		-lw 50
+		-dw 65
+		-da "right"
+		-pre "polyVerts"
+		 HUDPolyCountVerts;
+
+	headsUpDisplay 
+		-s 0
+		-b 1
+		-label "Edges:"
+		-lw 50
+		-dw 65
+		-da "right"
+		-pre "polyEdges"
+		 HUDPolyCountEdges;
+
+	headsUpDisplay 
+		-s 0
+		-b 2
+		-label "Faces:"
+		-lw 50
+		-dw 65
+		-da "right"
+		-pre "polyFaces"
+		 HUDPolyCountFaces;
+
+	headsUpDisplay 
+		-s 0
+		-b 3
+		-label "Tris:"
+		-lw 50
+		-dw 65
+		-da "right"
+		-pre "polyTriangles"
+		 HUDPolyCountTriangles;
+
+global proc float[] objectPosition()
+{
+    string $selectedNodes[] = `selectedNodes`;
+    float $position[3];
+    if (size($selectedNodes) > 0)
+    {
+        string $mainObject = $selectedNodes[ (size($selectedNodes) - 1) ];
+        $position[0] = `getAttr $mainObject.translateX`;
+        $position[1] = `getAttr $mainObject.translateY`;
+        $position[2] = `getAttr $mainObject.translateZ`;
+    }
+    else
+    {
+        $position[0] = 0;
+        $position[1] = 0;
+        $position[2] = 0;
+    }
+    return $position;
+}
+	headsUpDisplay
+		-section 0
+		-block 4
+		-label "Position"
+		-lw 50
+		-dw 65
+		-da "right"
+		-command "objectPosition()"
+		-event "SelectionChanged"
+		-nodeChanges "attributeChange"
+                 HUDObjectPosition;
+
+	headsUpDisplay
+		-s 0
+		-b 5
+		-label "Object:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "string $selectedObjects[] = `ls -sl -o`;"
+                -attachToRefresh
+                 HUDSelectedName;
+
+// Scene Name (Top Center)
+
+	headsUpDisplay 
+		-s 2
+                -b 0
+                -label "Scene:"
+		-da "left"
+                -c "file -q -namespace"
+                 HUDProjectName;
+
+// Grid (Top Right)
+
+	headsUpDisplay 
+		-s 4
+		-b 0
+		-label "Size:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "grid -query -size;"
+                -attachToRefresh
+                 HUDGridSize;
+
+	headsUpDisplay 
+		-s 4
+		-b 1
+		-label "Spacing:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "grid -query -spacing;"
+                -attachToRefresh
+                 HUDGridSpace;
+
+	headsUpDisplay 
+		-s 4
+		-b 2
+		-label "Divisions:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "grid -query -divisions;"
+                -attachToRefresh
+               HUDGridDivisions;
+
+// Info (Bottom Right)
+
+	headsUpDisplay 
+		-s 9
+		-b 3
+		-label "Axis:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "upAxis -q -axis;"
+                -attachToRefresh
+                 HUDAxis;
+
+	headsUpDisplay 
+		-s 9
+		-b 2
+		-label "Constraint:"
+		-lw 50
+		-dw 65
+		-da "right"
+		-c "string $SlideStatus = `xformConstraint -query -type`; return ($SlideStatus)"
+                -attachToRefresh
+		HUDConstraint;
+
+	headsUpDisplay 
+		-s 9
+		-b 1
+		-lw 50
+		-dw 65
+		-da "right"
+		-preset "softSelect"
+		HUDSoftSelectState;
+
+	headsUpDisplay 
+		-s 9
+		-b 0
+		-label "Units:"
+		-lw 50
+		-dw 65
+		-da "right"
+                -c "currentUnit -query -linear;"
+                -attachToRefresh
+                 HUDUnits;
