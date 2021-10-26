@@ -128,3 +128,33 @@ nameCommand
 	-command ("ToggleGrid")
 	ToggleGridNameCommand;
 
+nameCommand
+	-annotation "Display Control HUD"
+	-sourceType "mel"
+	-command ("bt_displayControl")
+	bt_displayControlHUDNamedCommand;
+
+nameCommand
+	-annotation "ShowManipulatorToolNameCommand"
+	-sourceType "mel"
+	-command ("ShowManipulatorTool")
+	ShowManipulatorToolNameCommand;
+
+nameCommand
+	-annotation "UniversalManipNameCommand"
+	-sourceType "mel"
+	-command ("UniversalManip")
+	UniversalManipNameCommand;
+
+nameCommand
+	-annotation "ShowManipulatorsNameCommand"
+	-sourceType "mel"
+	-command ("ShowManipulators")
+	ShowManipulatorsNameCommand;
+
+nameCommand
+	-annotation "UndoNameCommand"
+	-sourceType "mel"
+	-command ("Undo")
+	UndoNameCommand;
+

@@ -1,20 +1,22 @@
+
 // View Axis
 	headsUpDisplay -s 5
 		-b 0
-		-vis (`optionVar -q viewAxisVisibility`)
 		-pre "viewAxis"
 		HUDViewAxis;
 
-ToggleOriginAxis;
+	ToggleOriginAxis;
 
-// Poly Count (Top Left)
+// Poly Count
 	headsUpDisplay 
 		-s 0
 		-b 0
 		-label "Verts:"
 		-lw 50
-		-dw 65
-		-da "right"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
 		-pre "polyVerts"
 		 HUDPolyCountVerts;
 
@@ -23,8 +25,10 @@ ToggleOriginAxis;
 		-b 1
 		-label "Edges:"
 		-lw 50
-		-dw 65
-		-da "right"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
 		-pre "polyEdges"
 		 HUDPolyCountEdges;
 
@@ -33,8 +37,10 @@ ToggleOriginAxis;
 		-b 2
 		-label "Faces:"
 		-lw 50
-		-dw 65
-		-da "right"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
 		-pre "polyFaces"
 		 HUDPolyCountFaces;
 
@@ -43,138 +49,198 @@ ToggleOriginAxis;
 		-b 3
 		-label "Tris:"
 		-lw 50
-		-dw 65
-		-da "right"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
 		-pre "polyTriangles"
 		 HUDPolyCountTriangles;
 
-global proc float[] objectPosition()
-{
-    string $selectedNodes[] = `selectedNodes`;
-    float $position[3];
-    if (size($selectedNodes) > 0)
-    {
-        string $mainObject = $selectedNodes[ (size($selectedNodes) - 1) ];
-        $position[0] = `getAttr $mainObject.translateX`;
-        $position[1] = `getAttr $mainObject.translateY`;
-        $position[2] = `getAttr $mainObject.translateZ`;
-    }
-    else
-    {
-        $position[0] = 0;
-        $position[1] = 0;
-        $position[2] = 0;
-    }
-    return $position;
-}
-	headsUpDisplay
-		-section 0
-		-block 4
-		-label "Position"
-		-lw 50
-		-dw 65
-		-da "right"
-		-command "objectPosition()"
-		-event "SelectionChanged"
-		-nodeChanges "attributeChange"
-                 HUDObjectPosition;
-
-	headsUpDisplay
+	headsUpDisplay 
 		-s 0
-		-b 5
+		-b 4
 		-label "Object:"
 		-lw 50
-		-dw 65
-		-da "right"
-                -c "string $selectedObjects[] = `ls -sl -o`;"
-                -attachToRefresh
-                 HUDSelectedName;
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+		-c "selObj()"
+                -ev "SelectionChanged"
+		 HUDObject;
 
-// Scene Name (Top Center)
-
+// Scene Name
 	headsUpDisplay 
 		-s 2
                 -b 0
-                -label "Scene:"
-		-da "left"
-                -c "file -q -namespace"
+                -l ""
+		-lw 0
+		-lfs large
+		-dfs large
+                -c "sceneName_Display()"
                  HUDProjectName;
 
-// Grid (Top Right)
+// Grid
 
 	headsUpDisplay 
 		-s 4
 		-b 0
-		-label "Size:"
+		-label "Grid:"
+		-ba right
 		-lw 50
-		-dw 65
-		-da "right"
-                -c "grid -query -size;"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c "gridSize()"
                 -attachToRefresh
-                 HUDGridSize;
+               HUDgridSize;
 
 	headsUpDisplay 
 		-s 4
 		-b 1
-		-label "Spacing:"
+		-label ""
+		-ba right
 		-lw 50
-		-dw 65
-		-da "right"
-                -c "grid -query -spacing;"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c " gridSpace()"
                 -attachToRefresh
-                 HUDGridSpace;
+               HUDgridSpace;
 
 	headsUpDisplay 
 		-s 4
 		-b 2
-		-label "Divisions:"
+		-label ""
+		-ba right
 		-lw 50
-		-dw 65
-		-da "right"
-                -c "grid -query -divisions;"
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c " gridDivs()"
                 -attachToRefresh
-               HUDGridDivisions;
+               HUDgridDivs;
 
-// Info (Bottom Right)
+//Camera Name
+	headsUpDisplay
+		-s 7
+		-b 0
+		-ao true
+		-ba center
+		-lfs large
+		-dfs large
+		-pre "cameraNames"
+		HUDCameraNames;
 
+// Info
 	headsUpDisplay 
 		-s 9
-		-b 3
+		-b 2
 		-label "Axis:"
-		-lw 50
-		-dw 65
-		-da "right"
-                -c "upAxis -q -axis;"
+		-ba right
+		-lw 100
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c "Axis_Display();"
                 -attachToRefresh
                  HUDAxis;
 
 	headsUpDisplay 
 		-s 9
-		-b 2
-		-label "Constraint:"
-		-lw 50
-		-dw 65
-		-da "right"
-		-c "string $SlideStatus = `xformConstraint -query -type`; return ($SlideStatus)"
-                -attachToRefresh
-		HUDConstraint;
-
-	headsUpDisplay 
-		-s 9
 		-b 1
-		-lw 50
-		-dw 65
-		-da "right"
-		-preset "softSelect"
-		HUDSoftSelectState;
+		-label "Constraint:"
+		-ba right
+		-lw 100
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c "xformConstraint -query -type;"
+                -ev "xformConstraintOptionsChanged"
+                 HUDConstraint;
 
+//SelectionConstraints
 	headsUpDisplay 
 		-s 9
 		-b 0
 		-label "Units:"
-		-lw 50
-		-dw 65
-		-da "right"
-                -c "currentUnit -query -linear;"
-                -attachToRefresh
+		-ba right
+		-lw 100
+		-dw 0
+		-da left
+		-lfs large
+		-dfs large
+                -c "Units_Display()"
+                -ev "linearUnitChanged"
                  HUDUnits;
+
+////////////////////////Global Processors////////////////////////
+
+//Axis//////////////////////
+
+global proc string Axis_Display()
+{
+	string $upAxis = `upAxis -q -axis`;
+	return $upAxis;
+}
+
+//Grid//////////////////////
+
+global proc string[] gridSize()
+{
+        string $position[2];
+	$position[0] = (("Size:"));
+	$position[1] = `grid -query -size`;
+        return $position;
+}
+global proc string[] gridSpace()
+{
+        string $position[2];
+        $position[0] = (("Line:"));
+        $position[1] = `grid -query -spacing`;
+        return $position;
+}
+global proc string[] gridDivs()
+{
+        string $position[2];
+        $position[0] = (("Sdiv:"));
+        $position[1] = `grid -query -divisions`;
+        return $position;
+}
+
+//No of Obj
+global proc string selObj()
+{
+    string $result = (("Empty"));
+    string $SelectedObjects[] = `ls -sl -o`;
+    string $nSelectedObjects = size($SelectedObjects);
+
+    if (size($SelectedObjects) == 1){
+	$result = $SelectedObjects[0];
+    } else {
+	$result = $nSelectedObjects;
+    }
+
+	return $result;
+}
+
+//Scene Name//////////////////////
+
+global proc string sceneName_Display()
+{
+	string $sceneName = `file -q -namespace`;
+	return $sceneName;
+}
+
+//Units//////////////////////
+
+global proc string Units_Display()
+{
+	string $currentUnits = `currentUnit -q`;
+	return $currentUnits;
+}

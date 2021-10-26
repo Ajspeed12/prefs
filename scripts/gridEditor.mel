@@ -34,7 +34,7 @@ global proc gridEditor()
       if (`window -ex $wndName`)
               deleteUI $wndName;	// kill it
               
-      window -t "Grid Editor" -wh 130 90 $wndName;
+      window -t "Grid Editor" -s 0 -wh 200 100 $wndName;
 
       columnLayout -cw 150 -cat "both" 3 mainLayout;
 

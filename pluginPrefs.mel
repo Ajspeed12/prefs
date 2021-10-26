@@ -2,5 +2,6 @@
 //
 //
 evalDeferred("autoLoadPlugin(\"\", \"objExport\", \"objExport\")");
+evalDeferred("autoLoadPlugin(\"\", \"sweep\", \"sweep\")");
 evalDeferred("autoLoadPlugin(\"\", \"fbxmaya\", \"fbxmaya\")");
 evalDeferred("autoLoadPlugin(\"\", \"modelingToolkit\", \"modelingToolkit\")");
