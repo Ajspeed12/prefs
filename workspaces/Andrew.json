@@ -1,8 +1,7 @@
 {
-    "linkedMenu": "modelingMenuSet",
     "linkedHotkey": "Andrew_Hotkeys",
     "autoSave": false,
-    "selectedShelf": "malcolm341_mega_pack",
+    "selectedShelf": "TURTLE",
     "panels": [
         {
             "mainWindowPanel": true,
@@ -23,12 +22,12 @@
                                     "deleteLater": true,
                                     "loadImmediately": true,
                                     "checkPlugins": false,
-                                    "tabDirection": 2,
+                                    "tabDirection": 0,
                                     "closed": true,
                                     "widthProperty": "preferred",
                                     "heightProperty": "free",
                                     "controlWidth": 260,
-                                    "controlHeight": 972,
+                                    "controlHeight": 480,
                                     "initCallback": "outlinerStateCallback",
                                     "stateString": "outlinerEditor -e -showShapes 0 -showAssignedMaterials 0 -showTimeEditor 1 -showReferenceNodes 1 -showReferenceMembers 1 -showAttributes 0 -showConnected 0 -showAnimCurvesOnly 0 -showMuteInfo 0 -organizeByLayer 1 -organizeByClip 1 -showAnimLayerWeight 1 -autoExpandLayers 1 -autoExpand 0 -showDagOnly 1 -showAssets 1 -showContainedOnly 1 -showPublishedAsConnected 0 -showParentContainers 0 -showContainerContents 1 -ignoreDagHierarchy 0 -expandConnections 0 -showUpstreamCurves 1 -showUnitlessCurves 1 -showCompounds 1 -showLeafs 1 -showNumericAttrsOnly 0 -highlightActive 1 -autoSelectNewObjects 0 -doNotSelectNewObjects 0 -dropIsParent 1 -transmitFilters 0 -setFilter \"defaultSetFilter\" -showSetMembers 1 -allowMultiSelection 1 -alwaysToggleSelect 0 -directSelect 0 -isSet 0 -isSetMember 0 -displayMode \"DAG\" -expandObjects 0 -setsIgnoreFilters 1 -containersIgnoreFilters 0 -editAttrName 0 -showAttrValues 0 -highlightSecondary 0 -showUVAttrsOnly 0 -showTextureNodesOnly 0 -attrAlphaOrder \"default\" -animLayerFilterOptions \"allAffecting\" -sortOrder \"none\" -longNames 0 -niceNames 1 -showNamespace 1 -showPinIcons 0 -mapMotionTrails 0 -ignoreHiddenAttribute 0 -ignoreOutlinerColor 0 -renderFilterVisible 0 -renderFilterIndex 0 -selectionOrder \"chronological\" -expandAttribute 0 $editorName"
                                 }
@@ -38,7 +37,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 1434,
+                            "controlWidth": 1916,
                             "controlHeight": 972,
                             "collapsed": false,
                             "controls": [
@@ -54,7 +53,7 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "free",
-                                    "controlWidth": 1434,
+                                    "controlWidth": 1916,
                                     "controlHeight": 972,
                                     "initCallback": "mainPaneStateCallback",
                                     "stateString": "global string $gMainPane; paneLayout -edit -configuration single $gMainPane;if(`modelPanel -exists modelPanel4`){ modelPanel -edit -parent $gMainPane modelPanel4; paneLayout -edit -setPane modelPanel4 1 $gMainPane;}"
@@ -101,8 +100,8 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "free",
-                                    "controlWidth": 1897,
-                                    "controlHeight": 972
+                                    "controlWidth": 1916,
+                                    "controlHeight": 999
                                 }
                             ]
                         }
@@ -110,58 +109,9 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 461,
-                            "controlHeight": 989,
-                            "collapsed": false,
+                            "controlWidth": 460,
+                            "controlHeight": 920,
                             "controls": [
-                                {
-                                    "objectName": "AttributeEditor",
-                                    "title": "Attribute Editor",
-                                    "uiScript": "global string $gAttributeEditorForm; formLayout $gAttributeEditorForm;",
-                                    "retain": true,
-                                    "deleteLater": true,
-                                    "loadImmediately": true,
-                                    "checkPlugins": false,
-                                    "tabDirection": 3,
-                                    "closed": true,
-                                    "widthProperty": "preferred",
-                                    "heightProperty": "free",
-                                    "controlWidth": 461,
-                                    "controlHeight": 989
-                                },
-                                {
-                                    "objectName": "ChannelBox",
-                                    "title": "Channel Box",
-                                    "uiScript": "global string $gChannelsForm; formLayout $gChannelsForm;",
-                                    "retain": true,
-                                    "deleteLater": true,
-                                    "loadImmediately": true,
-                                    "checkPlugins": false,
-                                    "tabDirection": 3,
-                                    "closed": true,
-                                    "widthProperty": "preferred",
-                                    "heightProperty": "free",
-                                    "controlWidth": 260,
-                                    "controlHeight": 989
-                                },
-                                {
-                                    "objectName": "NEXDockControl",
-                                    "title": "Modeling Toolkit",
-                                    "uiScript": "dR_createNEXDockControl();",
-                                    "retain": true,
-                                    "deleteLater": true,
-                                    "loadImmediately": true,
-                                    "checkPlugins": false,
-                                    "tabDirection": 3,
-                                    "closed": true,
-                                    "widthProperty": "preferred",
-                                    "heightProperty": "free",
-                                    "controlWidth": 260,
-                                    "controlHeight": 989,
-                                    "requiredPlugins": [
-                                        "modelingToolkit"
-                                    ]
-                                },
                                 {
                                     "objectName": "ToolSettings",
                                     "title": "Tool Settings",
@@ -170,27 +120,12 @@
                                     "deleteLater": true,
                                     "loadImmediately": true,
                                     "checkPlugins": false,
-                                    "tabDirection": 3,
+                                    "tabDirection": 0,
                                     "closed": true,
                                     "widthProperty": "preferred",
                                     "heightProperty": "free",
                                     "controlWidth": 460,
-                                    "controlHeight": 920
-                                },
-{
-                                    "objectName": "UVToolkitDockControl",
-                                    "title": "UV Toolkit",
-                                    "uiScript": "createUVToolkitDockControl();",
-                                    "retain": true,
-                                    "deleteLater": true,
-                                    "loadImmediately": true,
-                                    "checkPlugins": false,
-                                    "tabDirection": 3,
-                                    "closed": true,
-                                    "widthProperty": "preferred",
-                                    "heightProperty": "free",
-                                    "controlWidth": 285,
-                                    "controlHeight": 972
+                                    "controlHeight": 800
                                 }
                             ]
                         }

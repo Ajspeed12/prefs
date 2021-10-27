@@ -73,10 +73,7 @@
 	headsUpDisplay 
 		-s 2
 		-b 0
-		-ba center
-		-lfs large
-		-dfs large
-                -c "sceneName_Display()"
+                -c "string $sceneName = `file -q -namespace`"
                  HUDProjectName;
 
 // Grid
@@ -143,7 +140,7 @@
 		-da left
 		-lfs large
 		-dfs large
-                -c "Axis_Display();"
+                -c "string $upAxis = `upAxis -q -axis`;"
                 -attachToRefresh
                  HUDAxis;
 
@@ -172,19 +169,11 @@
 		-da left
 		-lfs large
 		-dfs large
-                -c "Units_Display()"
+                -c "string $currentUnits = `currentUnit -q`"
                 -ev "linearUnitChanged"
                  HUDUnits;
 
 ////////////////////////Global Processors////////////////////////
-
-//Axis//////////////////////
-
-global proc string Axis_Display()
-{
-	string $upAxis = `upAxis -q -axis`;
-	return $upAxis;
-}
 
 //Grid//////////////////////
 
@@ -210,7 +199,8 @@ global proc string[] gridDivs()
         return $position;
 }
 
-//No of Obj
+//No of Obj//////////////////////
+
 global proc string selObj()
 {
     string $result = (("Empty"));
@@ -224,20 +214,4 @@ global proc string selObj()
     }
 
 	return $result;
-}
-
-//Scene Name//////////////////////
-
-global proc string sceneName_Display()
-{
-	string $sceneName = `file -q -namespace`;
-	return $sceneName;
-}
-
-//Units//////////////////////
-
-global proc string Units_Display()
-{
-	string $currentUnits = `currentUnit -q`;
-	return $currentUnits;
 }
