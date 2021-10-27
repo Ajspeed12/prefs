@@ -72,9 +72,8 @@
 // Scene Name
 	headsUpDisplay 
 		-s 2
-                -b 0
-                -l ""
-		-lw 0
+		-b 0
+		-ba center
 		-lfs large
 		-dfs large
                 -c "sceneName_Display()"
@@ -86,9 +85,9 @@
 		-s 4
 		-b 0
 		-label "Grid:"
-		-ba right
-		-lw 50
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
@@ -99,10 +98,9 @@
 	headsUpDisplay 
 		-s 4
 		-b 1
-		-label ""
-		-ba right
-		-lw 50
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
@@ -113,10 +111,9 @@
 	headsUpDisplay 
 		-s 4
 		-b 2
-		-label ""
-		-ba right
-		-lw 50
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
@@ -140,9 +137,9 @@
 		-s 9
 		-b 2
 		-label "Axis:"
-		-ba right
-		-lw 100
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
@@ -154,9 +151,9 @@
 		-s 9
 		-b 1
 		-label "Constraint:"
-		-ba right
-		-lw 100
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
@@ -169,9 +166,9 @@
 		-s 9
 		-b 0
 		-label "Units:"
-		-ba right
-		-lw 100
-		-dw 0
+		-ba left
+		-labelWidth 70
+		-dataWidth 0
 		-da left
 		-lfs large
 		-dfs large
