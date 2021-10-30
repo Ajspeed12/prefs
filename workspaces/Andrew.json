@@ -12,7 +12,7 @@
                         "tabWidget": {
                             "selectedIndex": 0,
                             "controlWidth": 260,
-                            "controlHeight": 972,
+                            "controlHeight": 480,
                             "controls": [
                                 {
                                     "objectName": "Outliner",
@@ -109,9 +109,66 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 460,
-                            "controlHeight": 920,
+                            "controlWidth": 285,
+                            "controlHeight": 972,
                             "controls": [
+                                {
+                                    "objectName": "UVToolkitDockControl",
+                                    "title": "UV Toolkit",
+                                    "uiScript": "createUVToolkitDockControl();",
+                                    "retain": true,
+                                    "deleteLater": true,
+                                    "loadImmediately": true,
+                                    "checkPlugins": false,
+                                    "tabDirection": 0,
+                                    "closed": true,
+                                    "widthProperty": "preferred",
+                                    "heightProperty": "free",
+                                    "controlWidth": 285,
+                                    "controlHeight": 972
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "tabWidget": {
+                            "selectedIndex": 0,
+                            "controlWidth": 460,
+                            "controlHeight": 972,
+                            "controls": [
+                                {
+                                    "objectName": "AttributeEditor",
+                                    "title": "Attribute Editor",
+                                    "uiScript": "global string $gAttributeEditorForm; formLayout $gAttributeEditorForm;",
+                                    "retain": true,
+                                    "deleteLater": true,
+                                    "loadImmediately": true,
+                                    "checkPlugins": false,
+                                    "tabDirection": 0,
+                                    "closed": true,
+                                    "widthProperty": "preferred",
+                                    "heightProperty": "free",
+                                    "controlWidth": 460,
+                                    "controlHeight": 972
+                                },
+                                {
+                                    "objectName": "NEXDockControl",
+                                    "title": "Modeling Toolkit",
+                                    "uiScript": "dR_createNEXDockControl();",
+                                    "retain": true,
+                                    "deleteLater": true,
+                                    "loadImmediately": true,
+                                    "checkPlugins": false,
+                                    "tabDirection": 0,
+                                    "closed": true,
+                                    "widthProperty": "preferred",
+                                    "heightProperty": "free",
+                                    "controlWidth": 260,
+                                    "controlHeight": 972,
+                                    "requiredPlugins": [
+                                        "modelingToolkit"
+                                    ]
+                                },
                                 {
                                     "objectName": "ToolSettings",
                                     "title": "Tool Settings",
@@ -125,7 +182,22 @@
                                     "widthProperty": "preferred",
                                     "heightProperty": "free",
                                     "controlWidth": 460,
-                                    "controlHeight": 800
+                                    "controlHeight": 972
+                                },
+                                {
+                                    "objectName": "ChannelBox",
+                                    "title": "Channel Box",
+                                    "uiScript": "global string $gChannelsForm; formLayout $gChannelsForm;",
+                                    "retain": true,
+                                    "deleteLater": true,
+                                    "loadImmediately": true,
+                                    "checkPlugins": false,
+                                    "tabDirection": 0,
+                                    "closed": true,
+                                    "widthProperty": "preferred",
+                                    "heightProperty": "free",
+                                    "controlWidth": 260,
+                                    "controlHeight": 972
                                 }
                             ]
                         }
