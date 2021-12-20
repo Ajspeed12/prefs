@@ -158,3 +158,9 @@ nameCommand
 	-command ("Undo")
 	UndoNameCommand;
 
+nameCommand
+	-annotation "DisplayAppearance_ToggleNameCommand"
+	-sourceType "mel"
+	-command ("DisplayAppearance_Toggle")
+	DisplayAppearance_ToggleNameCommand;
+
