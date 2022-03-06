@@ -4,12 +4,14 @@
 
 runTimeCommand
 	-label ""
+	-annotation "Andrew_MM (Press)"
+	-longAnnotation ""
+	-category "Other items.User Marking Menus"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation "Andrew_MM (Press)"
-	-category "Other items.User Marking Menus"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent `findPanelPopupParent` -mm 1 tempMM; \nsource \"menu_Andrew_MM\";\n")
@@ -17,12 +19,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("ToggleOutliner;")
@@ -30,12 +34,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("if (`optionVar -q mainWindowMenubarVis`) {setMainMenubarVisible 0;} else {setMainMenubarVisible 1;};\nif (`optionVar -q allowMenusInPanels`) {toggleMenuBarsInAllPanels 0;} else {toggleMenuBarsInAllPanels 1;};\nif (`optionVar -q collapseIconBarsInPanels`) {toggleModelEditorBarsInAllPanels 0;} else {toggleModelEditorBarsInAllPanels 1;};")
@@ -43,12 +49,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation "Andrew_MM (Release)"
+	-longAnnotation ""
+	-category "Other items.User Marking Menus"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation "Andrew_MM (Release)"
-	-category "Other items.User Marking Menus"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
@@ -56,12 +64,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("string $visPanel[]=`getPanel -vis`;\nint $mode;\nif (size($visPanel)>0)\n{\nfor ($panel in $visPanel)\n{\nif (`match \"^modelPanel\" $panel`==\"modelPanel\")\n{\n$mode=`modelEditor -q -xray $panel`;\nif ($mode>0)\nmodelEditor -e -xray 0 $panel;\nelse\nmodelEditor -e -xray 1 $panel;\n}\n}\nprint (\"\\nxray=\"+$mode+\".\");\n} else\nprint (\"\\nNo model panels to modify.\");")
@@ -69,12 +79,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("ToggleAttributeEditor;")
@@ -82,12 +94,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("ToggleChannelBox;")
@@ -95,12 +109,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("ToggleModelingToolkit;")
@@ -108,12 +124,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("ToggleToolSettings;")
@@ -121,12 +139,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("toggleUVToolkit;")
@@ -134,12 +154,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("//import image to the viewPort that the hovered cursor mouse\nstring $cam=`getPanel -underPointer `;\nstring $activCamName=\"\";\nswitch($cam){\ncase \"modelPanel4\":\n$activCamName = \"perspShape\";\nbreak;\ncase \"modelPanel1\":\n$activCamName = \"topShape\";\nbreak;\ncase \"modelPanel2\":\n$activCamName = \"sideShape\";\nbreak;\ncase \"modelPanel3\":\n$activCamName = \"frontShape\";\nbreak;\n}\nimportImagePlane { $activCamName };")
@@ -147,12 +169,14 @@ runTimeCommand
 
 runTimeCommand
 	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
 	-image ""
 	-tags ""
 	-keywords ""
 	-plugin ""
-	-annotation ""
-	-category "Custom Scripts"
+	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "mel"
 	-command ("string $selectedPanel = `getPanel -wf`;\nstring $DA = `modelEditor -q -da $selectedPanel`;\n\nif ($DA == \"wireframe\") {\nmodelEditor -e -da \"smoothShaded\" $selectedPanel;\n}\nelse {\nmodelEditor -e -da \"wireframe\" $selectedPanel;\nsetWireframeOnShadedOption 0 $selectedPanel;\n}")
